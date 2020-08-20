@@ -1,0 +1,29 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+#Feel Free to change the username and password to match your local postgres env
+development:
+  <<: *default
+  database: noteapp_development
+  username: test2
+  password: test2
+  port: 5432
+  host: localhost
+
+#Feel Free to change the username and password to match your local postgres env
+test:
+  <<: *default
+  database: noteapp_test
+  username: test2
+  password: test2
+  port: 5432
+  host: localhost
+
+
+production:
+  <<: *default
+  database: noteapp_production
+  url: <%= ENV['DATABASE_URL'] %>
+
